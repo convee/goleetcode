@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"strconv"
+)
+
 /*
  * @lc app=leetcode.cn id=9 lang=golang
  *
@@ -56,6 +61,35 @@ func isPalindrome(x int) bool {
 	return false
 }
 
-// func main() {
-// 	fmt.Println(isPalindrome(121))
-// }
+func isPalindrome2(x int) bool {
+	str := fmt.Sprint(x)
+	ttStr := []rune(str)
+	lenStr := len(str)
+	for i, j := 0, lenStr-1; i < j; i, j = i+1, j-1 {
+		ttStr[i], ttStr[j] = ttStr[j], ttStr[i]
+	}
+	if str == string(ttStr) {
+		return true
+	}
+	return false
+}
+
+func isPalindrome3(x int) bool {
+	if x < 0 {
+		return false
+	}
+	if x < 10 && x > 0 {
+		return true
+	}
+	s := strconv.Itoa(x)
+	length := len(s)
+	for i := 0; i <= length/2; i++ {
+		if s[i] != s[length-1-i] {
+			return false
+		}
+	}
+	return true
+}
+func main() {
+	fmt.Println(isPalindrome(0))
+}

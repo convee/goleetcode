@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
  * @lc app=leetcode.cn id=3 lang=golang
  *
@@ -54,4 +56,9 @@ func lengthOfLongestSubstring(s string) int {
 		m[v] = k
 	}
 	return maxLen
+}
+
+func main() {
+
+	fmt.Println(lengthOfLongestSubstring("pwwkew"))
 }

@@ -19,6 +19,30 @@ func defangIPaddr(address string) string {
 	return s.String()
 }
 
+func defangIPaddr2(address string) string {
+	var res []byte
+	for _, v := range address {
+		if v == '.' {
+			res = append(res, '[', '.', ']')
+		} else {
+			res = append(res, byte(v))
+		}
+	}
+	return string(res)
+}
+
+func defangIPaddr3(address string) string {
+	var s []string
+	for _, i := range address {
+		if i == '.' {
+			s = append(s, string("[.]"))
+		} else {
+			s = append(s, string(i))
+		}
+	}
+	return strings.Join(s, "")
+}
+
 func main() {
 	ip := "127.0.0.1"
 	fmt.Println(defangIPaddr(ip))

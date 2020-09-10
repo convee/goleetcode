@@ -2,6 +2,15 @@ package gostudy
 
 //给定一组不含重复元素的整数数组 nums，返回该数组所有可能的子集（幂集）。
 //思路：这是一个典型的应用回溯法的题目，简单来说就是穷尽所有可能性，算法模板如下
+//result = []
+// func backtrack(选择列表,路径):
+// if 满足结束条件:
+// 	result.add(路径)s
+// 	return
+// for 选择 in 选择列表:
+// 	做选择
+// 	backtrack(选择列表,路径)
+// 	撤销选择
 func subsets(nums []int) [][]int {
 	// 保存最终结果
 	result := make([][]int, 0)

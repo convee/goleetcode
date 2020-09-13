@@ -20,7 +20,7 @@ func preorderTraversal(root *TreeNode) {
 }
 
 // V3：前序非递归遍历
-func preorderTraversal(root *TreeNode) []int {
+func preorderTraversal2(root *TreeNode) []int {
 	// 非递归
 	if root == nil {
 		return nil
@@ -73,7 +73,7 @@ func postorderTraversal(root *TreeNode) []int {
 
 func main() {
 	root := &TreeNode{Val: 1}
-	root.Left = &TreeNode{}
-	root.Right = &TreeNode{}
+	root.Left = &TreeNode{Val: 2}
+	root.Right = &TreeNode{Val: 3}
 	preorderTraversal(root)
 }

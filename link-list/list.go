@@ -1,5 +1,8 @@
 package main
-
+import (
+	"container/list"
+	"fmt"
+)
 type ListNode struct {
 	Val  int
 	Next *ListNode
@@ -18,10 +21,21 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	return head
 }
 
+func fmtListNode(head *ListNode) {
+	l := list.New()
+	for ; head != nil; head = head.Next {
+	   l.PushFront(head.Val)
+	}
+	for item := l.Front(); item != nil; item = item.Next() {
+	   fmt.Println(item.Value)
+	}
+ }
+
 func main() {
 	head := &ListNode{Val: 1}
 	head.Next = &ListNode{Val: 2}
 	head.Next.Next = &ListNode{Val: 3}
 	head.Next.Next.Next = &ListNode{Val: 3}
 	deleteDuplicates(head)
+	fmtListNode(head)
 }

@@ -9,3 +9,5 @@
 
 //--解法3
 //select distinct(p1.Email) from Person p1  join Person  p2 on p1.Email = p2.Email AND p1.Id!=p2.Id
+
+package main

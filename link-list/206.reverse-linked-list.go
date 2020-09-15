@@ -44,3 +44,31 @@ func reverseList(head *ListNode) *ListNode {
 	}
 	return pre
 }
+
+//思路：用一个 prev 节点保存向前指针，temp 保存向后的临时指针
+func reverseList2(head *ListNode) *ListNode {
+	var prev *ListNode
+	for head != nil {
+		// 保存当前head.Next节点，防止重新赋值后被覆盖
+		// 一轮之后状态：nil<-1 2->3->4
+		//              prev   head
+		temp := head.Next
+		head.Next = prev
+		// pre 移动
+		prev = head
+		// head 移动
+		head = temp
+	}
+	return prev
+}
+
+func main()  {
+	head1 := &ListNode{Val: 1}
+	head2 := &ListNode{Val: 2}
+	head3 := &ListNode{Val: 3}
+	head4 := &ListNode{Val: 4}
+	head1.Next = head2
+	head2.Next = head3
+	head3.Next = head4
+	FmtListNode(reverseList(head1))
+}

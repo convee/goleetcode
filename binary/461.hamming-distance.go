@@ -9,13 +9,12 @@ package binary
 //注意：
 //0 ≤ x, y < 231.
 
-
 func hammingDistance(x int, y int) int {
-	z:=x^y
-	sum:=0
+	z := x ^ y
+	sum := 0
 	for z != 0 {
-		sum += z&1
-		z = z>>1
+		sum += z & 1
+		z = z >> 1
 	}
 	return sum
 }

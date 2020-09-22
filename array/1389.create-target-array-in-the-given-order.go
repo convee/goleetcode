@@ -2,7 +2,7 @@ package main
 
 //1389. 按既定顺序创建目标数组
 func createTargetArray(nums []int, index []int) []int {
-	var target = make([]int, len(nums))
+	target := make([]int, len(nums))
 	for k, i := range index {
 		copy(target[i+1:], target[i:])
 		target[i] = nums[k]

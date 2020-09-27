@@ -23,6 +23,26 @@ func kidsWithCandies(candies []int, extraCandies int) []bool {
 	return result
 }
 
+func kidsWithCandies2(candies []int, extraCandies int) []bool {
+	n := len(candies)
+	maxCandies := 0
+	for i := 0; i < n; i++ {
+		maxCandies = max(maxCandies, candies[i])
+	}
+	ret := make([]bool, n)
+	for i := 0; i < n; i++ {
+		ret[i] = candies[i]+extraCandies >= maxCandies
+	}
+	return ret
+}
+
+func max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
+}
+
 func main() {
 	candies := []int{1, 2, 3, 4, 5}
 	extraCandies := 3

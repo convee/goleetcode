@@ -55,3 +55,16 @@ func removeElement1(nums []int, start, val int) int {
 	}
 	return j
 }
+
+//双指针法，i为慢指针，j为快指针
+//当nums[i] != nums[j] 时 i向前进一位，并且nums[i]等于 nums[j]
+func removeDuplicates3(nums []int) int {
+	i := 0
+	for j := 1; j < len(nums); j++ {
+		if nums[i] != nums[j] {
+			i++
+			nums[i] = nums[j]
+		}
+	}
+	return i + 1
+}

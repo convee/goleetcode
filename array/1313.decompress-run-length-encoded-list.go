@@ -21,6 +21,8 @@ func decompressRLElist(nums []int) []int {
 	return res
 }
 
+//思路：
+//我们以步长（step）为 2 遍历数组 nums，对于当前遍历到的元素 a 和 b，我们将 a 个 b 添加进答案中即可。
 func decompressRLElist2(nums []int) []int {
 	var result []int
 	for i := 0; i < len(nums); i = i + 2 {

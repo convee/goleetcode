@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 //循环链表
 type Ring struct {
 	next, prev *Ring       //前驱和后驱节点
@@ -78,7 +80,47 @@ func (r *Ring) Link(s *Ring) *Ring {
 	}
 	return n
 }
+
+//删除节点
+func (r *Ring) Unlink(n int) *Ring {
+	if n < 0 {
+		return nil
+
+	}
+	return r.Link(r.Move(n + 1))
+}
+
+// 查看循环链表长度
+func (r *Ring) Len() int {
+	n := 0
+	if r != nil {
+		n = 1
+		for p := r.Next(); p != r; p = p.next {
+			n++
+		}
+	}
+	return n
+}
+func linkNewTest() {
+	// 第一个节点
+	r := &Ring{Value: -1}
+	// 链接新的五个节点
+	r.Link(&Ring{Value: 1})
+	r.Link(&Ring{Value: 2})
+	r.Link(&Ring{Value: 3})
+	r.Link(&Ring{Value: 4})
+	node := r
+	for {
+		// 打印节点值
+		fmt.Println(node.Value)
+		// 移到下一个节点
+		node = node.Next()
+		//  如果节点回到了起点，结束
+		if node == r {
+			return
+		}
+	}
+}
 func main() {
-	r := new(Ring)
-	r.init()
+	linkNewTest()
 }

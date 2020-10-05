@@ -64,6 +64,20 @@ func (r *Ring) Move(n int) *Ring {
 	return r
 
 }
+
+//添加节点
+//往节点A，链接一个节点，并且返回之前节点A的后驱节点
+func (r *Ring) Link(s *Ring) *Ring {
+	n := r.Next()
+	if s != nil {
+		p := s.Prev()
+		r.next = s
+		s.prev = r
+		n.prev = p
+		p.next = n
+	}
+	return n
+}
 func main() {
 	r := new(Ring)
 	r.init()

@@ -61,7 +61,7 @@ func (r *Ring) Move(n int) *Ring {
 			r = r.next
 		}
 	}
-	return n
+	return r
 
 }
 func main() {

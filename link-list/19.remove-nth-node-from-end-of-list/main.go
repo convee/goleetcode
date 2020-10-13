@@ -30,3 +30,26 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 	// 输出啦
 	return node.Next
 }
+
+//首先我们将添加一个哑结点作为辅助，该结点位于列表头部。哑结点用来简化某些极端情况，
+//例如列表中只含有一个结点，或需要删除列表的头部。在第一次遍历中，我们找出列表的长度 LL。
+//然后设置一个指向哑结点的指针，并移动它遍历列表，直至它到达第 (L - n)(L−n) 个结点那里。
+//我们把第 (L - n)(L−n) 个结点的 next 指针重新链接至第 (L - n + 2)(L−n+2) 个结点，完成这个算法。
+
+func removeNthFromEnd2(head *ListNode, n int) *ListNode {
+	node := &ListNode{0, head}
+	l := 0
+	first := head
+	for first != nil {
+		l++
+		first = first.Next
+	}
+	l -= n
+	first = node
+	for l > 0 {
+		l--
+		first = first.Next
+	}
+	first.Next = first.Next.Next
+	return node.Next
+}

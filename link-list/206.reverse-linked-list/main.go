@@ -64,6 +64,15 @@ func reverseList2(head *ListNode) *ListNode {
 	}
 	return prev
 }
+func reverseList3(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	p := reverseList3(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return p
+}
 
 func main() {
 	head1 := &ListNode{Val: 1}

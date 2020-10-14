@@ -49,6 +49,7 @@ func reverseList(head *ListNode) *ListNode {
 //在遍历列表时，将当前节点的 next 指针改为指向前一个元素
 //由于节点没有引用其上一个节点，因此必须事先存储其前一个元素。
 //在更改引用之前，还需要另一个指针来存储下一个节点。不要忘记在最后返回新的头引用！
+
 func reverseList2(head *ListNode) *ListNode {
 	var prev *ListNode
 	for head != nil {
@@ -74,6 +75,22 @@ func reverseList3(head *ListNode) *ListNode {
 	return p
 }
 
+//解题思路
+//1->2->3->4
+//2->1->3->4
+//3->2->1->4
+//4->3->2->1
+func reverseList4(head *ListNode) *ListNode {
+	p := head
+	q := head.Next
+	for p.Next != nil {
+		p.Next = q.Next
+		q.Next = head
+		head = q
+		q = p.Next
+	}
+	return head
+}
 func main() {
 	head1 := &ListNode{Val: 1}
 	head2 := &ListNode{Val: 2}
@@ -82,5 +99,5 @@ func main() {
 	head1.Next = head2
 	head2.Next = head3
 	head3.Next = head4
-	FmtListNode(reverseList(head1))
+	reverseList(head1)
 }

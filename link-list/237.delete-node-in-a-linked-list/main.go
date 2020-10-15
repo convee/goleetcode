@@ -1,4 +1,4 @@
-package main
+package _37_delete_node_in_a_linked_list
 
 /**
  * Definition for singly-linked list.
@@ -9,7 +9,7 @@ package main
  */
 
 type ListNode struct {
-	Var  int
+	Val  int
 	Next *ListNode
 }
 

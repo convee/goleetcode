@@ -36,6 +36,11 @@ package main
 新建一个头结点，遍历原链表，把每个节点用头结点插入到新建链表中。最后，新建的链表就是反转后的链表。
 */
 
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 func reverseList(head *ListNode) *ListNode {
 	cur := head
 	var pre *ListNode
@@ -50,6 +55,11 @@ func reverseList(head *ListNode) *ListNode {
 //由于节点没有引用其上一个节点，因此必须事先存储其前一个元素。
 //在更改引用之前，还需要另一个指针来存储下一个节点。不要忘记在最后返回新的头引用！
 
+//1->2->3->4->nil
+//nil<-1->2->3->4
+//nil<-1<-2->3->4
+//nil<-1<-2<-3->4
+//nil<-1<-2<-3<-4
 func reverseList2(head *ListNode) *ListNode {
 	var prev *ListNode
 	for head != nil {

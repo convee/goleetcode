@@ -1,7 +1,7 @@
 package main
+
 import (
-	"container/list"
-	"fmt"
+	"goleetcode/util"
 )
 type ListNode struct {
 	Val  int
@@ -21,12 +21,7 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	return head
 }
 
-func FmtListNode(head *ListNode) {
-	l := list.New()
-	for ; head != nil; head = head.Next {
-	   l.PushFront(head.Val)
-	}
-	for item := l.Front(); item != nil; item = item.Next() {
-	   fmt.Println(item.Value)
-	}
- }
+func main() {
+	var head *util.ListNode
+	util.FmtListNode(head)
+}

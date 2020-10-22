@@ -10,15 +10,15 @@ type TreeNode struct {
 //https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
 func preorderTraversal(root *TreeNode) []int {
 	var res []int
-	res = dfs(root, res)
+	res = preorder(root, res)
 	return res
 }
-func dfs(root *TreeNode, res []int) []int {
+func preorder(root *TreeNode, res []int) []int {
 	if root == nil {
 		return res
 	}
 	res = append(res, root.Val)
-	res = dfs(root.Left, res)
-	res = dfs(root.Right, res)
+	res = preorder(root.Left, res)
+	res = preorder(root.Right, res)
 	return res
 }

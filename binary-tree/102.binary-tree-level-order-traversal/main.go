@@ -1,5 +1,7 @@
 package main
 
+import "container/list"
+
 //102. 二叉树的层序遍历
 //https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
 
@@ -41,14 +43,12 @@ func levelOrder(root *TreeNode) [][]int {
 	return ret
 }
 
-//递归
+//dfs 递归 思路
+//对该二叉树进行先序遍历（根左右的顺序），
+//同时，记录节点所在的层次level，并且对每一层都定义一个数组，然后将访问到的节点值放入对应层的数组中。
+
 func levelOrder2(root *TreeNode) [][]int {
-	if root == nil {
-		return nil
-	}
-	res := make([][]int, 0)
-	res = dfs(root, 0, res)
-	return res
+	return dfs(root, 0, [][]int{})
 }
 
 func dfs(root *TreeNode, level int, res [][]int) [][]int {
@@ -57,9 +57,43 @@ func dfs(root *TreeNode, level int, res [][]int) [][]int {
 	}
 	if level == len(res) {
 		res = append(res, []int{})
+	} else {
+		res[level] = append(res[level], root.Val)
 	}
-	res[level] = append(res[level], root.Val)
 	res = dfs(root.Left, level+1, res)
 	res = dfs(root.Right, level+1, res)
 	return res
+}
+
+//BFS 思路：
+//使用Queue的数据结构。我们将root节点初始化进队列，通过消耗尾部，插入头部的方式来完成BFS
+func levelOrder3(root *TreeNode) [][]int {
+	var result [][]int
+	if root == nil {
+		return result
+	}
+	// 定义一个双向队列
+	queue := list.New()
+	// 头部插入根节点
+	queue.PushFront(root)
+	// 进行广度搜索
+	for queue.Len() > 0 {
+		var current []int
+		listLength := queue.Len()
+		for i := 0; i < listLength; i++ {
+			//消耗尾部
+			// queue.Remove(queue.Back()).(*TreeNode)：移除最后一个元素并将其转化为TreeNode类型
+			node := queue.Remove(queue.Back()).(*TreeNode)
+			current = append(current, node.Val)
+			if node.Left != nil {
+				//插入头部
+				queue.PushFront(node.Left)
+			}
+			if node.Right != nil {
+				queue.PushFront(node.Right)
+			}
+		}
+		result = append(result, current)
+	}
+	return result
 }

@@ -42,7 +42,7 @@ func intersect2(nums1 []int, nums2 []int) []int {
 	}
 	k := 0
 	for _, v := range nums2 {
-		// 如果元素相同，将其存入 nums2
+		// 如果元素相同，将其存入 nums2(提示：解答中我们并没有创建空白数组，因为遍历后的数组其实就没用了。我们可以将相等的元素放入用过的数组中，就为我们节省下了空间。)
 		if m[v] > 0 {
 			m[v]--
 			nums2[k] = v

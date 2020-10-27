@@ -6,7 +6,7 @@ import (
 )
 
 //561. 数组拆分 I
-//把从a1到an数组下标为奇数的数都加起来
+//先将数组排序，然后把从a1到an数组下标为奇数的数都加起来
 //https://leetcode-cn.com/problems/array-partition-i/
 func arrayPairSum(nums []int) int {
 	l := len(nums)

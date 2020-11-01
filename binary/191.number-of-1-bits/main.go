@@ -10,9 +10,9 @@ package binary
 //解释：输入的二进制串 00000000000000000000000000001011 中，共有三位为 '1'。
 
 func hammingWeight(num uint32) int {
-	res:=0
-	for num!=0{
-		num=num&(num-1)
+	res := 0
+	for num != 0 {
+		num = num & (num - 1)
 		res++
 	}
 	return res

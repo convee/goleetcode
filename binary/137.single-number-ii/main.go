@@ -1,4 +1,6 @@
-package binary
+package main
+
+import "fmt"
 
 // 137. 只出现一次的数字 II
 // https://leetcode-cn.com/problems/single-number-ii/
@@ -29,4 +31,16 @@ func singleNumber(nums []int) int {
 		}
 	}
 	return 0
+}
+
+//错误用法示例
+func main() {
+	nums := []int{1, 2, 2, 2, 3, 3, 3}
+	m := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		m[nums[i]]++
+	}
+	for _, v := range nums {
+		fmt.Println(m[v])
+	}
 }

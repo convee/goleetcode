@@ -1,4 +1,4 @@
-package binary
+package main
 
 //461. 汉明距离
 

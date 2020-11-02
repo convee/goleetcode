@@ -1,6 +1,8 @@
 package binary
 
-//给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现了三次。找出那个只出现了一次的元素。
+// 137. 只出现一次的数字 II
+// https://leetcode-cn.com/problems/single-number-ii/
+// 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现了三次。找出那个只出现了一次的元素。
 func singleNumber2(nums []int) int {
 	// 统计每位1的个数
 	var result int
@@ -14,4 +16,17 @@ func singleNumber2(nums []int) int {
 		result ^= (sum % 3) << i
 	}
 	return result
+}
+
+func singleNumber(nums []int) int {
+	m := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		m[nums[i]]++
+	}
+	for k, v := range m {
+		if v == 1 {
+			return k
+		}
+	}
+	return 0
 }

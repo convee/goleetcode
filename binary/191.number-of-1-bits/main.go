@@ -17,3 +17,16 @@ func hammingWeight(num uint32) int {
 	}
 	return res
 }
+
+func hammingWeight2(num uint32) int {
+	result := 0
+	var mask uint32
+	mask = 1 //初始化掩码
+	for i := 0; i < 32; i++ {
+		if num&mask != 0 {
+			result++
+		}
+		mask <<= 1
+	}
+	return result
+}

@@ -3,7 +3,31 @@ package main
 // 239. 滑动窗口最大值
 // https://leetcode-cn.com/problems/sliding-window-maximum/
 
-// 思路：双端队列
+// 思路：暴力解法 O(nk)
+func maxSlidingWindow(nums []int, k int) []int {
+	if len(nums) <= 0 {
+		return []int{}
+	}
+	l := len(nums) - k + 1
+	res := []int{}
+	for i := 0; i < l; i++ {
+		mx := -1 << 31
+		for j := i; j < k+i; j++ {
+			mx = max(mx, nums[j])
+		}
+		res = append(res, mx)
+	}
+	return res
+}
+
+func max(a int, b int) int {
+	if a >= b {
+		return a
+	}
+	return b
+}
+
+// 思路：双端队列 O(n)
 
 func maxSlidingWindow(nums []int, k int) []int {
 	if len(nums) == 0 {

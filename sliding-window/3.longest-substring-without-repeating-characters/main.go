@@ -58,7 +58,33 @@ func lengthOfLongestSubstring(s string) int {
 	return maxLen
 }
 
+func lengthOfLongestSubstring2(s string) int {
+	res := 0
+	i, j := 0, 0
+	strs := []rune(s)
+	l := len(strs)
+	m := make(map[rune]int)
+	for i < l && j < l {
+		if _, ok := m[strs[j]]; !ok {
+			m[strs[j]] = j
+			j++
+			res = max(res, j-i)
+		} else {
+			delete(m, strs[i])
+			i++
+		}
+	}
+	return res
+}
+
+func max(a, b int) int {
+	if a >= b {
+		return a
+	}
+	return b
+}
+
 func main() {
 
-	fmt.Println(lengthOfLongestSubstring("pwwkew"))
+	fmt.Println(lengthOfLongestSubstring2("pwwkew"))
 }

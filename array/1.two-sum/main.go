@@ -28,7 +28,7 @@ import "fmt"
  *
  *
  */
-
+// 思路：哈希
 func twoSum(nums []int, target int) []int {
 	if len(nums) <= 0 {
 		return []int{}
@@ -43,6 +43,7 @@ func twoSum(nums []int, target int) []int {
 	return []int{}
 }
 
+// 思路：双指针
 func twoSum2(nums []int, target int) []int {
 	l := len(nums)
 	result := []int{}

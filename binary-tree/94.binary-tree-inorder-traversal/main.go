@@ -23,3 +23,19 @@ func inorder(root *TreeNode, res []int) []int {
 	res = inorder(root.Right, res)
 	return res
 }
+
+// 思路：迭代
+func inorderTraversal(root *TreeNode) (res []int) {
+	stack := []*TreeNode{}
+	for root != nil || len(stack) > 0 {
+		for root != nil {
+			stack = append(stack, root)
+			root = root.Left
+		}
+		root = stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		res = append(res, root.Val)
+		root = root.Right
+	}
+	return
+}

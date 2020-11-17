@@ -56,7 +56,7 @@ func dfs(root *TreeNode, level int, res [][]int) [][]int {
 		return res
 	}
 	if level == len(res) {
-		res = append(res, []int{})
+		res = append(res, []int{root.Val})
 	} else {
 		res[level] = append(res[level], root.Val)
 	}

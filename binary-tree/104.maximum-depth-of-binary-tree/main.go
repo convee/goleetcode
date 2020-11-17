@@ -31,3 +31,23 @@ func max(a, b int) int {
 	}
 	return b
 }
+
+func maxDepth2(root *TreeNode) int {
+	dep := 0
+	return preorder(root, dep)
+}
+
+func preorder(root *TreeNode, dep int) int {
+	if root == nil {
+		return dep
+	}
+	l := preorder(root.Left, dep+1)
+	r := preorder(root.Right, dep+1)
+	return max(l, r)
+}
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}

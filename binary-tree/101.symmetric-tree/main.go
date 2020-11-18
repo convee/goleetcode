@@ -5,7 +5,8 @@ type TreeNode struct {
 	Left  *TreeNode
 	Right *TreeNode
 }
-
+// 101.对称二叉树
+// https://leetcode-cn.com/problems/symmetric-tree/
 // 思路：递归
 // 1.两个树的跟节点相同
 // 2.每个树的左子树和另外一个树的右子树相同

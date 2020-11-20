@@ -22,11 +22,11 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func buildTree(preorder []int, inorder []int) *TreeNode {
-	if len(preorder) <= 0 || len(inorder) <= 0 {
+func buildTree(inorder []int, postorder []int) *TreeNode {
+	if len(inorder) <= 0 || len(postorder) <= 0 {
 		return nil
 	}
-	rv := preorder[len(preorder)-1]
+	rv := postorder[len(postorder)-1]
 	var i int
 	for i = range inorder {
 		if inorder[i] == rv {
@@ -35,7 +35,7 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 	}
 	return &TreeNode{
 		Val:   rv,
-		Left:  buildTree(preorder[:i], inorder[:i]),
-		Right: buildTree(preorder[i:len(preorder)-1], inorder[i+1:]),
+		Left:  buildTree(inorder[:i], postorder[:i]),
+		Right: buildTree(inorder[i+1:], postorder[i:len(postorder)-1]),
 	}
 }

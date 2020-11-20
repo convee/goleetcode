@@ -23,6 +23,6 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 	return &TreeNode{
 		Val:   rv,
 		Left:  buildTree(preorder[:i], inorder[:i]),
-		Right: buildTree(preorder[i+1:len(preorder)-1], inorder[i+1:len(inorder)-1]),
+		Right: buildTree(preorder[i:len(preorder)-1], inorder[i+1:]),
 	}
 }

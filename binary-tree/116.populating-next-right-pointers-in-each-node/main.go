@@ -18,13 +18,13 @@ func connect(root *Node) *Node {
 	queue := []*Node{root}
 	//循环迭代层数
 	for len(queue) > 0 {
-		cur := queue
+		curQueue := queue
 		queue = nil
 		//遍历这一层所有节点
-		for i, node := range cur {
+		for i, node := range curQueue {
 			//连接当前层所有节点
-			if i+1 < len(cur) {
-				node.Next = cur[i+1]
+			if i < len(curQueue)-1 {
+				node.Next = curQueue[i+1]
 			}
 			//拓展下一层节点
 			if node.Left != nil {

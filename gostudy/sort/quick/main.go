@@ -1,6 +1,6 @@
 package main
 
-// 快速排序
+// 快速排序（前序遍历）
 func sort(nums []int, lo int, hi int) {
 	// 临界点 p
 	p := partition(nums, lo, hi)

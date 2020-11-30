@@ -104,4 +104,5 @@ func postorderTraversal(root *TreeNode) []int {
 ### 分治法应用
 ### BFS层次应用
 ### 二叉搜索树应用
+* 
 ## 总结

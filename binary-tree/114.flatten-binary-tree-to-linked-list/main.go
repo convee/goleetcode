@@ -14,8 +14,8 @@ func flatten(root *TreeNode) {
 	if root == nil {
 		return
 	}
-	flatten(root.Right)
 	flatten(root.Left)
+	flatten(root.Right)
 	/**** 后序遍历位置 ****/
 	// 1、左右子树已经被拉平成一条链表
 	left := root.Left

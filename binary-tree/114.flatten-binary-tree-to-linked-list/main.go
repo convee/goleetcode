@@ -9,17 +9,25 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-var last *TreeNode
-
+// 定义：将以 root 为根的树拉平为链表
 func flatten(root *TreeNode) {
 	if root == nil {
 		return
 	}
 	flatten(root.Right)
 	flatten(root.Left)
-
-	root.Right = last
+	/**** 后序遍历位置 ****/
+	// 1、左右子树已经被拉平成一条链表
+	left := root.Left
+	right := root.Right
+	// 2、将左子树作为右子树
+	root.Right = left
 	root.Left = nil
-	last = root
+	// 3、将原先的右子树接到当前右子树的末端
+	p := root
+	for p.Right != nil {
+		p = p.Right
+	}
+	p.Right = right
 
 }

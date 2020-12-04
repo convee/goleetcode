@@ -4,6 +4,8 @@ import "strconv"
 
 // 652. 寻找重复的子树
 // https://leetcode-cn.com/problems/find-duplicate-subtrees/
+
+// 注意：如果用全局变量 本地test case 没问题 但是 leetcode 会污染
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode

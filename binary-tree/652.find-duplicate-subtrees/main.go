@@ -1,5 +1,7 @@
 package main
 
+import "strconv"
+
 // 652. 寻找重复的子树
 // https://leetcode-cn.com/problems/find-duplicate-subtrees/
 type TreeNode struct {
@@ -8,31 +10,32 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-var res []*TreeNode
-var m map[string]int
-
 func findDuplicateSubtrees(root *TreeNode) []*TreeNode {
-	m = map[string]int{}
-	subtree(root)
-	return res
+	myMap := make(map[string]int)
+	ret := make([]*TreeNode, 0)
+
+	dnf(root, myMap, &ret)
+	return ret
 }
 
-func subtree(root *TreeNode) string {
+func dnf(root *TreeNode, myMap map[string]int, ret *[]*TreeNode) string {
 	if root == nil {
-		return "#"
+		return ""
 	}
-	left := subtree(root.Left)
-	right := subtree(root.Right)
-	str := left + "," + right + "," + string(root.Val)
-	if _, ok := m[str]; ok {
-		m[str]++
+
+	lstring := dnf(root.Left, myMap, ret)
+	rstring := dnf(root.Right, myMap, ret)
+
+	retstring := lstring + "," + rstring + "," + strconv.Itoa(root.Val)
+
+	if v, ok := myMap[retstring]; !ok {
+		myMap[retstring] = 1
 	} else {
-		m[str] = 1
-	}
-	if m[str] == 2 {
-		res = append(res, root)
+		if v == 1 {
+			*ret = append(*ret, root)
+		}
+		myMap[retstring]++
 	}
 
-	return str
-
+	return retstring
 }

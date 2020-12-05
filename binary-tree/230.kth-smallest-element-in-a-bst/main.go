@@ -12,23 +12,23 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-var rank int
 var res int
 
 func kthSmallest(root *TreeNode, k int) int {
-	doKthSmallest(root, k)
+	rank := 0
+	doKthSmallest(root, k, &rank)
 	return res
 }
 
-func doKthSmallest(root *TreeNode, k int) {
+func doKthSmallest(root *TreeNode, k int, rank *int) {
 	if root == nil {
 		return
 	}
-	doKthSmallest(root.Left, k)
-	rank++
-	if rank == k {
+	doKthSmallest(root.Left, k, rank)
+	*rank++
+	if *rank == k {
 		res = root.Val
 		return
 	}
-	doKthSmallest(root.Left, k)
+	doKthSmallest(root.Right, k, rank)
 }

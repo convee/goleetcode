@@ -104,5 +104,17 @@ func postorderTraversal(root *TreeNode) []int {
 ### 分治法应用
 ### BFS层次应用
 ### 二叉搜索树应用
-* 
+* 1、对于 BST 的每一个节点 node，左子树节点的值都比 node 的值要小，右子树节点的值都比 node 的值大
+* 2、对于 BST 的每一个节点 node，它的左侧子树和右侧子树都是 BST
+* 3、BST 的中序遍历结果是有序的（升序）
+
+```
+void traverse(TreeNode root) {
+    if (root == null) return;
+    traverse(root.left);
+    // 中序遍历代码位置
+    print(root.val);
+    traverse(root.right);
+}
+```
 ## 总结

@@ -38,3 +38,28 @@ func detectCycle2(head *ListNode) *ListNode {
 	}
 	return nil
 }
+
+func detectCycle3(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil || head.Next.Next == nil {
+		return nil
+	}
+
+	slow, fast := head, head
+	for fast != nil && fast.Next != nil {
+		fast, slow = fast.Next.Next, slow.Next
+		if fast == slow {
+			break
+		}
+	}
+
+	if fast == nil || fast.Next == nil {
+		return nil
+	}
+
+	slow = head
+	for fast != slow {
+		fast, slow = fast.Next, slow.Next
+	}
+
+	return fast
+}

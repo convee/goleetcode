@@ -73,3 +73,22 @@ func removeNthFromEnd3(head *ListNode, n int) *ListNode {
 	pre.Next = pre.Next.Next
 	return result.Next
 }
+
+func removeNthFromEnd4(head *ListNode, n int) *ListNode {
+	len := getLength(head)
+	pre := &ListNode{0, head}
+	cur := pre
+	for i := 0; i < len-n; i++ {
+		cur = cur.Next
+	}
+	cur.Next = cur.Next.Next
+	return pre.Next
+}
+
+func getLength(head *ListNode) (length int) {
+	for head != nil {
+		head = head.Next
+		length++
+	}
+	return
+}

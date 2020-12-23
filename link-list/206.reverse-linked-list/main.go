@@ -42,10 +42,9 @@ type ListNode struct {
 }
 
 func reverseList(head *ListNode) *ListNode {
-	cur := head
 	var pre *ListNode
-	for cur != nil {
-		cur.Next, pre, cur = pre, cur, cur.Next
+	for head != nil {
+		pre,cur,cur.Next = cur,cur.Next,prev
 	}
 	return pre
 }

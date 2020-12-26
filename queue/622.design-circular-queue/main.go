@@ -1,4 +1,4 @@
-package queue
+package main
 
 //622. 设计循环队列
 //https://leetcode-cn.com/problems/design-circular-queue/
